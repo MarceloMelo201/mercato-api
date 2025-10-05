@@ -1,10 +1,7 @@
 package com.bytenest.mercato_api.model.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.UUID;
 
@@ -12,6 +9,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 @Entity(name = "product_sale")
 @Table(name = "products_sales")
 public class ProductSalesModel {

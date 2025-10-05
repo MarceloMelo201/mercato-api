@@ -1,9 +1,11 @@
 package com.bytenest.mercato_api.dtos.customer;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Builder;
 
 import java.time.LocalDateTime;
 
+@Builder
 public record CustomerResponseDTO(
         long idCustomer,
 
