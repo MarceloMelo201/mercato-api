@@ -12,4 +12,6 @@ public interface ProductRepository extends JpaRepository<ProductModel, UUID> {
 
     //busca por nome ignorando letras minusculas ou maiusculas
     Optional<ProductModel> findByNameContainingIgnoreCase(String name);
+
+    boolean existsBySku(String sku);
 }

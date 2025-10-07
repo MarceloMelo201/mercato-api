@@ -1,5 +1,9 @@
 package com.bytenest.mercato_api.dtos.product;
 
+import jakarta.validation.constraints.Positive;
+
+import java.math.BigDecimal;
+
 public record ProductUpdateDTO(
 
         String name,
@@ -8,8 +12,10 @@ public record ProductUpdateDTO(
 
         String description,
 
+        @Positive
         Integer quantity,
 
-        double price
+        @Positive
+        BigDecimal price
 ) {
 }
