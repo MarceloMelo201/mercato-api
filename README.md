@@ -1,6 +1,6 @@
 📦 Mercato API
 
-API de gerenciamento de vendas desenvolvida em Java + Spring Boot, com integração ao Oracle Database,
+API de gerenciamento de vendas desenvolvida em Java + Spring Boot, com integração ao Postgre Database,
 documentação via Swagger (OpenAPI) e deploy utilizando Docker.
 
 ## Índice
@@ -14,8 +14,9 @@ documentação via Swagger (OpenAPI) e deploy utilizando Docker.
 - Java 21
 - Spring Boot
 - Spring Data JPA
-- Oracle Database (produção) / H2 (desenvolvimento)
+- Lombok
+- PostgreSQL Database (produção) / H2 (desenvolvimento)
 - Docker
 - Swagger (OpenAPI)
-- JUnit 5 (testes)
+- JUnit 5 (testes) / Mockito
 - Spring Security /JWT (autenticação)

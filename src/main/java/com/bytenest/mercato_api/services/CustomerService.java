@@ -9,7 +9,6 @@ import com.bytenest.mercato_api.mappers.CustomerMapper;
 import com.bytenest.mercato_api.model.entities.CustomerModel;
 import com.bytenest.mercato_api.repositories.CustomerRepository;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,14 +38,13 @@ public class CustomerService {
                 .stream().map(customerMapper::toResponse).toList();
     }
 
-    public CustomerResponseDTO findById(Long id) {
-        return customerRepository.findById(id)
-                .stream().map(customerMapper::toResponse).findAny()
-                .orElseThrow(CustomerNotFound::new);
+    public List<CustomerResponseDTO> findByName(String name) {
+        return customerRepository.findByNameContainingIgnoreCase(name)
+                .stream().map(customerMapper::toResponse).toList();
     }
 
-    public CustomerResponseDTO findByName(String name) {
-        return customerRepository.findByNameContainingIgnoreCase(name)
+    public CustomerResponseDTO findById(Long id) {
+        return customerRepository.findById(id)
                 .stream().map(customerMapper::toResponse).findAny()
                 .orElseThrow(CustomerNotFound::new);
     }
@@ -63,7 +61,7 @@ public class CustomerService {
         CustomerModel customer = customerRepository
                 .findById(id).orElseThrow(CustomerNotFound::new);
 
-        if(customerRepository.existsByEmail(dto.email()) && !Objects.equals(dto.email(), customer.getEmail()))
+        if (customerRepository.existsByEmail(dto.email()) && !Objects.equals(dto.email(), customer.getEmail()))
             throw new EmailAlreadyExistsException();
 
         if (dto.name() != null) customer.setName(dto.name());
